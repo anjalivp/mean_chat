@@ -1,0 +1,31 @@
+h3{
+    text-align: center;
+}
+
+img{
+    margin-top:120px;
+    align-self: center;
+}
+
+button{
+    font-size: 24px;
+    width: 50%;
+    align-self: center;
+    border-radius: 12px;
+    background-color:#f8da5b;
+}
+
+.card{
+    background-image: -webkit-linear-gradient(120deg, #a696c8 50%, #cca8e9 50%);
+
+}
+
+h3{
+    font-weight: bolder;
+}
+
+p{
+    font-size:20px;
+    font-weight: bold;
+    text-align: center;
+}

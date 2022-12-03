@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg p-5 mt-5 mb-5">
+                <h1>REGISTER</h1><hr>
+                <div [ngClass]="className" role="alert">
+                    {{message}} <a routerLink="/login">Login Here</a>
+
+                </div>
+                <form [formGroup]="registerForm">
+                    <div class="form-group">
+                        <label>USERNAME</label>
+                        <input type="text" class="form-control" placeholder="Enter Username" formControlName="username">
+                        <!-- <small id="" class="form-text custom-invalid-feedback">Field is required</small> -->
+                    </div>
+                    <div class="form-group">
+                        <label>EMAIL</label>
+                        <input type="email" class="form-control" placeholder="Enter Email" formControlName="email">
+                    </div>
+                    <div class="form-group">
+                        <label>PASSWORD</label>
+                        <input type="password" class="form-control" placeholder="Enter Password" formControlName="password">
+                    </div><br>
+                    <button class="btn btn-outline-warning" (click)="register()">CREATE ACCOUNT</button>
+                    <p>Already a member?<a routerLink="/login">Login</a></p>
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+</div>

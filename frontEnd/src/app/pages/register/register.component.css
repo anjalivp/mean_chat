@@ -1,0 +1,19 @@
+h1{
+    text-align: center;
+}
+
+input{
+    margin-bottom:10px;
+}
+
+label{
+    font-weight:400
+}
+
+button{
+    width: 100%;
+}
+
+.alert{
+    text-align: center;
+}

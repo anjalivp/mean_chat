@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg p-5 mt-5 mb-5">
+                <h1>LOGIN</h1><hr>
+                <div [ngClass]="className" role="alert">
+                    {{message}}
+                </div>
+                <form [formGroup]="loginForm" class="text-left">
+                    <div class="form-group">
+                        <label>EMAIL</label>
+                        <input type="email" class="form-control" placeholder="Enter Email" formControlName="email">
+                   
+                        <label>PASSWORD</label>
+                        <input type="password" class="form-control" placeholder="Enter Password" formControlName="password">
+                    </div><br>
+                    <button class="btn btn-outline-warning" (click)="login()">LOGIN</button>
+                    <p>Doesn't have an account?<a routerLink="/register">Register</a></p>
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
