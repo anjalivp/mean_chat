@@ -6,15 +6,20 @@
                 <div [ngClass]="className" role="alert">
                     {{message}}
                 </div>
-                <form [formGroup]="loginForm" class="text-left">
+                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="text-left">
                     <div class="form-group">
                         <label>EMAIL</label>
                         <input type="email" class="form-control" placeholder="Enter Email" formControlName="email">
-                   
+                        <span class="error-block" *ngIf="email.touched && email.errors && email.errors['required']">Email is required</span>
+                        <span class="error-block" *ngIf="email.touched && email.errors && email.errors['email']">Enter a valid Email</span>
+                    </div>
+                    <div class="form-group">
                         <label>PASSWORD</label>
                         <input type="password" class="form-control" placeholder="Enter Password" formControlName="password">
+                        <span class="error-block" *ngIf="password.touched && password.errors && password.errors['required']">Password is required</span>
+                        <span class="error-block" *ngIf="password.touched && password.errors && password.errors['minlength']">Password should contain atleast 6 characters</span>
                     </div><br>
-                    <button class="btn btn-outline-warning" (click)="login()">LOGIN</button>
+                    <button class="btn btn-warning" [disabled]="loginForm.invalid" (click)="login()">LOGIN</button>
                     <p>Doesn't have an account?<a routerLink="/register">Register</a></p>
                 </form>
 

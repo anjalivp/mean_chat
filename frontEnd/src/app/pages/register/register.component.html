@@ -1,28 +1,35 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <div class="card shadow-lg p-5 mt-5 mb-5">
+            <div class="card p-5 mt-5 mb-5">
                 <h1>REGISTER</h1><hr>
                 <div [ngClass]="className" role="alert">
                     {{message}} <a routerLink="/login">Login Here</a>
 
                 </div>
-                <form [formGroup]="registerForm">
+                <form  [formGroup]="registerForm" (ngSubmit)="onSubmit()" >
                     <div class="form-group">
                         <label>USERNAME</label>
-                        <input type="text" class="form-control" placeholder="Enter Username" formControlName="username">
-                        <!-- <small id="" class="form-text custom-invalid-feedback">Field is required</small> -->
+                        <input type="text" class="form-control" placeholder="Enter Username" formControlName="username" >
+                        <span class="error-block" *ngIf="username.touched && username.errors && username.errors['required']">Username is required</span>
+                        <span class="error-block" *ngIf="username.touched && username.errors && username.errors['minlength']">Username should contain atleast 3 characters</span>
                     </div>
                     <div class="form-group">
                         <label>EMAIL</label>
-                        <input type="email" class="form-control" placeholder="Enter Email" formControlName="email">
+                        <input  type="email" class="form-control" placeholder="Enter Email" formControlName="email"   >
+                        <span class="error-block" *ngIf="email.touched && email.errors && email.errors['required']">Email is required</span>
+                        <span class="error-block" *ngIf="email.touched && email.errors && email.errors['email']">Enter a valid Email</span>
                     </div>
                     <div class="form-group">
                         <label>PASSWORD</label>
-                        <input type="password" class="form-control" placeholder="Enter Password" formControlName="password">
+                        <input  type="password" class="form-control" placeholder="Enter Password" formControlName="password">
+                        <span class="error-block" *ngIf="password.touched && password.errors && password.errors['required']">Password is required</span>
+                        <span class="error-block" *ngIf="password.touched && password.errors && password.errors['minlength']">Password should contain atleast 6 characters</span>
                     </div><br>
-                    <button class="btn btn-outline-warning" (click)="register()">CREATE ACCOUNT</button>
-                    <p>Already a member?<a routerLink="/login">Login</a></p>
+                    <div class="form-group">
+                        <button [disabled]="registerForm.invalid" class="btn btn-warning" (click)="register()">CREATE ACCOUNT</button>
+                        <p>Already a member?<a routerLink="/login">Login</a></p>
+                    </div>
                 </form>
 
             </div>

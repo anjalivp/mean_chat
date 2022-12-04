@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
@@ -8,17 +8,17 @@ import { AuthService } from 'src/app/service/auth.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  registerForm! : FormGroup
+  registerForm: FormGroup = new FormGroup({});
   message: String ='';
   className = 'd-none';
   isProcess: boolean = false;
-
+ 
   constructor(private fb: FormBuilder, private auth: AuthService){
     this.registerForm=this.fb.group({
-      'username': ['', [Validators.required, Validators.minLength(2)]],
-      'email': ['', [Validators.required, Validators.email]],
-      'password': ['', [Validators.required, Validators.minLength(6)]]
-    })
+      username: ['', [Validators.required,  Validators.minLength(3)]],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]]
+    });
    }
 
   ngOnInit(): void{
@@ -45,4 +45,18 @@ export class RegisterComponent implements OnInit {
   })
  }
 
+get username(){
+   return this.registerForm.get('username') as FormControl;
+} 
+get email(){
+  return this.registerForm.get('email') as FormControl;
+} 
+get password(){
+  return this.registerForm.get('password') as FormControl;
+} 
+
+onSubmit(){
+  console.log(this.registerForm);
+}
+ 
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators} from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl} from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/service/auth.service';
 @Component({
@@ -8,15 +8,15 @@ import { AuthService } from 'src/app/service/auth.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  loginForm!:FormGroup
+  loginForm: FormGroup = new FormGroup({});
   message: String ='';
   className = 'd-none';
 
   constructor(private fb:FormBuilder, private auth: AuthService, private router: Router){
     this.loginForm = this.fb.group({
-      'email': ['', Validators.required],
-      'password': ['',Validators.required]
-    })
+      'email': ['', [Validators.required, Validators.email]],
+      'password': ['',[Validators.required, Validators.minLength(6)]]
+    });
   }
 
   ngOnInit(): void{
@@ -37,4 +37,17 @@ export class LoginComponent implements OnInit {
         this.className='alert alert-danger'
     })
   }
+
+ 
+ get email(){
+   return this.loginForm.get('email') as FormControl;
+ } 
+ get password(){
+   return this.loginForm.get('password') as FormControl;
+ } 
+ 
+ onSubmit(){
+   console.log(this.loginForm);
+ }
+
 }
