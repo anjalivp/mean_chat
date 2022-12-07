@@ -37,7 +37,6 @@ export class RegisterComponent implements OnInit {
       this.message=res.message;
       this.className='alert alert-danger'
     }
-    // this.registerForm.reset();
   },err => {
       this.isProcess=false;
       this.message="Server Error!";

@@ -11,8 +11,6 @@ const chatroomSchema = new Schema({
     username: {type: String},
     email: {type: String, unique: true},
     message: {type: String},
-    created_at: {type:Number, default: Date.now().valueOf()},
-    updated_at: {type:Number, default: Date.now().valueOf()}
 
 })
 
